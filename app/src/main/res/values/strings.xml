@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">EP1</string>
+    <string name="app_name">Elizabeth_PC</string>
+    <string name="text_view_1">TextView1</string>
+    <string name="text_view_2">TextView2</string>
 </resources>

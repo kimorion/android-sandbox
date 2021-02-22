@@ -7,12 +7,33 @@
     tools:context="com.kimorion.ep1.MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/TextView1"
+        android:layout_width="250dp"
+        android:layout_height="53dp"
+        android:background="@color/primaryLightColor"
+        android:gravity="center_horizontal"
+        android:shadowColor="@color/red"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="10"
+        android:text="@string/text_view_1"
+        android:textAlignment="center"
+        android:textSize="20pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="250dp"
+        android:layout_height="53dp"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal"
+        android:text="@string/text_view_2"
+        android:textAlignment="center"
+        android:textSize="20pt"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
