@@ -4,20 +4,22 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.*
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kimorion.ep1.databinding.ActivityMainBinding
-import kotlin.properties.Delegates
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var appViewModel: AppViewModel
+    private val TAG = "MyActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +34,23 @@ class MainActivity : AppCompatActivity() {
 
         model.currentAlignment.observe(this, {
             alignmentTextView.gravity = it ?: alignmentTextView.gravity
+            val messageText = "Gravity was set: $it"
+            Log.i(TAG, messageText)
+            Toast.makeText(applicationContext, messageText, Toast.LENGTH_SHORT).show()
         })
         model.currentStyle.observe(this, {
             val newTypeFace = if (it == Typeface.NORMAL) null else styleTextView.typeface
             styleTextView.setTypeface(newTypeFace, it ?: styleTextView.typeface.style)
+            val messageText = "text style was set: $it"
+            Log.i(TAG, messageText)
+            Toast.makeText(applicationContext, messageText, Toast.LENGTH_SHORT).show()
         })
         model.currentColor.observe(this, {
             alignmentTextView.setTextColor(it ?: alignmentTextView.textColors)
             styleTextView.setTextColor(it ?: styleTextView.textColors)
+            val messageText = "text color was set"
+            Log.i(TAG, messageText)
+            Toast.makeText(applicationContext, messageText, Toast.LENGTH_SHORT).show()
         })
         model.currentSize.observe(this, {
             alignmentTextView.setTextSize(
@@ -50,6 +61,9 @@ class MainActivity : AppCompatActivity() {
                 TypedValue.COMPLEX_UNIT_SP,
                 it ?: styleTextView.textSize
             )
+            val messageText = "text size was set: $it"
+            Log.i(TAG, messageText)
+            Toast.makeText(applicationContext, messageText, Toast.LENGTH_SHORT).show()
         })
 
         registerForContextMenu(alignmentTextView)
@@ -112,9 +126,12 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val colorToggleButton = activityMainBinding.colorToggleButton
         val sizeToggleButton = activityMainBinding.sizeToggleButton
-        
+
         when (item.itemId) {
             R.id.apply_settings -> {
+                val messageText = "new settings was applied"
+                Log.i(TAG, messageText)
+                Toast.makeText(applicationContext, messageText, Toast.LENGTH_SHORT).show()
                 if (colorToggleButton.isChecked) {
                     appViewModel.currentColor.postValue(ColorStateList.valueOf(Color.BLUE))
                 } else {
@@ -128,6 +145,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             R.id.reset_settings -> {
+                val messageText = "settings was reset"
+                Log.i(TAG, messageText)
+                Toast.makeText(applicationContext, messageText, Toast.LENGTH_SHORT).show()
                 appViewModel.currentColor.postValue(ColorStateList.valueOf(Color.GRAY))
                 appViewModel.currentStyle.postValue(Typeface.NORMAL)
                 appViewModel.currentAlignment.postValue(Gravity.CENTER)
