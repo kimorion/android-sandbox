@@ -17,4 +17,7 @@
     <color name="secondaryDarkColor">#c8a415</color>
     <color name="primaryTextColor">#000000</color>
     <color name="secondaryTextColor">#000000</color>
+    <color name="blue">#03A9F4</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="green">#4CAF50</color>
 </resources>

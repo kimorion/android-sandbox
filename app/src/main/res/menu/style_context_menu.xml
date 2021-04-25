@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/italic_option"
+        android:title="Italic" />
+
+    <item
+        android:id="@+id/bold_option"
+        android:title="Bold" />
+
+    <item
+        android:id="@+id/normal_option"
+        android:title="Normal" />
+</menu>
